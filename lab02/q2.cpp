@@ -109,9 +109,10 @@ void print(){
 
             cout<<arr[i][j]<<" ";
         }
+        cout<<endl;
     }
 
-       cout<<"Original Matrix: "<<endl;
+       cout<<"Matrix After adding 2 at odd index: "<<endl;
 
        for(int i=0;i<rows;++i){
         for(int j=0;j<cols;++j){
@@ -125,12 +126,44 @@ void print(){
         for(int j=0;j<cols;++j){
 
             
-            cout<<arr[i][j];
+            cout<<arr[i][j]<<" ";
         }
+        cout<<endl;
     }
 }
+
+~Matrix(){
+
+    for (int i = 0; i < rows; i++)
+    {
+        delete [] arr[i];
+    }
+    delete []arr;
+    
 }
 };
 int main(){
+
+    int rows,cols;
+    cout<<"Enter the Rows and colums: "<<endl;
+    cin>>rows>>cols;
+
+    Matrix m(rows,cols);
+
+    for(int i=0;i<rows;++i){
+        for(int j=0;j<cols;++j){
+            cin>>m.arr[i][j];
+        }
+    }
+
+
+    m.print();
+
+    cout<<endl;
+
+    m.transpose();
+    cout<<"Transpose Matrix: "<<endl;
+    m.print();
+
     return 0;
 }
