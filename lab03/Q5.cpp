@@ -63,7 +63,7 @@ public:
       }
    }
 
-   void print(Node *&head)
+   void print()
    {
       Node *temp = head;
 
