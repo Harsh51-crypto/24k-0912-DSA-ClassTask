@@ -65,22 +65,34 @@ void levelOrder(Node *&root){
 	}
 	
 }
+int sum(Node *&root)
+{
+   if (root == NULL)
+   {
+      return 0;
+   }
 
-bool isEqual(Node *&root,int target, int &sum){
-	
-	if(root==NULL){
-		return false;
-	}
-	
-	sum+=root->data;
-	if(sum==root->data){
-		return true;
-	}
-	
-	
-	
-	
+   int ans = root->data;
+
+   return ans + sum(root->left) + sum(root->right);
 }
+
+
+bool isFound(Node *&root, int target)
+{
+
+   if (root == NULL)
+   {
+      return false;
+   }
+
+   if (sum(root) == target)
+      return true;
+
+   return isFound(root->left, target) || isFound(root->right, target);
+}
+
+
 
 int main(){
 	Node *root;
@@ -88,3 +100,4 @@ int main(){
 	levelOrder(root);
 	
 }
+
